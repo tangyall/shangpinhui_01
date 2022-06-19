@@ -1,4 +1,16 @@
-const { defineConfig } = require('@vue/cli-service')
+let { defineConfig } = require('@vue/cli-service')
+
 module.exports = defineConfig({
-  transpileDependencies: true
+  // transpileDependencies: true,
+  devServer: {
+    proxy: {
+      'api': {
+        target: 'http://gmall-h5-api.atguigu.cn',
+        // pathRewrite: {'^api': ''}
+      }
+    }
+  },
+  lintOnSave: false,
+  productionSourceMap: false,
+  publicPath: './'
 })
